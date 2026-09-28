@@ -1,6 +1,7 @@
 import React from 'react';
 
 export const TOOLS_CONFIG = [
+  { id: 'dashboard', name: 'Dashboard Overview', icon: '🏠', section: 'main', badge: 'Hub' },
   { id: 'cheque', name: 'Cheque Printer', icon: '🖋️', section: 'banking', badge: 'v1.0 Pro' },
   { id: 'receipt', name: 'Cash Receipt Maker', icon: '💰', section: 'banking', badge: 'Ready' },
   { id: 'calculator', name: 'GST & Margin Calc', icon: '🧮', section: 'banking', badge: 'Ready' },
@@ -23,7 +24,7 @@ export default function Sidebar({
 
   return (
     <aside className="sidebar print-hide" id="sidebar">
-      <div className="sidebar-header">
+      <div className="sidebar-header" style={{ cursor: 'pointer' }} onClick={() => onSelectTool('dashboard')}>
         <div className="brand-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -37,6 +38,25 @@ export default function Sidebar({
       </div>
 
       <div className="sidebar-content">
+        {/* Hub Section */}
+        <div className="nav-section">
+          <div className="nav-section-title">Suite Hub</div>
+          <ul className="nav-list">
+            <li>
+              <a
+                className={`nav-item ${activeTool === 'dashboard' ? 'active' : ''}`}
+                onClick={() => onSelectTool('dashboard')}
+                style={{ cursor: 'pointer' }}
+              >
+                <span className="nav-icon">🏠</span>
+                <span>Dashboard Overview</span>
+                <span className={`nav-badge ${activeTool === 'dashboard' ? 'badge-active' : ''}`}>
+                  8 Tools
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
         {/* Banking & Accounts Section */}
         <div className="nav-section">
           <div className="nav-section-title">Banking & Cash Tools</div>

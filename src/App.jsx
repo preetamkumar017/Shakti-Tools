@@ -8,6 +8,7 @@ import ChequeHistory from './components/ChequeHistory';
 import CalibrationModal from './components/CalibrationModal';
 
 // Suite Tools
+import DashboardView from './components/DashboardView';
 import InvoiceTool from './components/InvoiceTool';
 import ReceiptTool from './components/ReceiptTool';
 import SalarySlipTool from './components/SalarySlipTool';
@@ -21,7 +22,7 @@ import { getSavedPresets, savePreset, resetPresetToDefault } from './utils/prese
 import { getChequeHistory, saveChequeToHistory, deleteChequeRecord, clearChequeHistory, exportHistoryToCSV } from './utils/storage';
 
 export default function App() {
-  const [activeTool, setActiveTool] = useState('cheque');
+  const [activeTool, setActiveTool] = useState('dashboard');
   const [banks, setBanks] = useState(() => getSavedPresets());
   const [activeBankId, setActiveBankId] = useState('sbi');
   const [coordinates, setCoordinates] = useState(() => {
@@ -388,6 +389,17 @@ export default function App() {
                 onExportCsv={handleExportCsv}
               />
             </>
+          )}
+
+          {activeTool === 'dashboard' && (
+            <DashboardView
+              onSelectTool={(toolId) => {
+                setActiveTool(toolId);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              chequeHistoryCount={historyRecords.length}
+              banksCount={Object.keys(banks).length}
+            />
           )}
 
           {activeTool === 'invoice' && <InvoiceTool />}
