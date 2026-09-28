@@ -7,11 +7,21 @@ import CoordinateInspector from './components/CoordinateInspector';
 import ChequeHistory from './components/ChequeHistory';
 import CalibrationModal from './components/CalibrationModal';
 
+// Suite Tools
+import InvoiceTool from './components/InvoiceTool';
+import ReceiptTool from './components/ReceiptTool';
+import SalarySlipTool from './components/SalarySlipTool';
+import QuotationTool from './components/QuotationTool';
+import ChallanTool from './components/ChallanTool';
+import GstCalculatorTool from './components/GstCalculatorTool';
+import WordsConverterTool from './components/WordsConverterTool';
+
 import { numberToIndianWords, splitChequeWords, formatIndianCurrency } from './utils/wordsConverter';
 import { getSavedPresets, savePreset, resetPresetToDefault } from './utils/presets';
 import { getChequeHistory, saveChequeToHistory, deleteChequeRecord, clearChequeHistory, exportHistoryToCSV } from './utils/storage';
 
 export default function App() {
+  const [activeTool, setActiveTool] = useState('cheque');
   const [banks, setBanks] = useState(() => getSavedPresets());
   const [activeBankId, setActiveBankId] = useState('sbi');
   const [coordinates, setCoordinates] = useState(() => {
@@ -305,6 +315,11 @@ export default function App() {
       <div className="app-container">
         {/* Sidebar */}
         <Sidebar
+          activeTool={activeTool}
+          onSelectTool={(toolId) => {
+            setActiveTool(toolId);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
           onScrollToHistory={() => {
             document.getElementById('section-history')?.scrollIntoView({ behavior: 'smooth' });
           }}
@@ -314,6 +329,7 @@ export default function App() {
         {/* Main Content Area */}
         <main className="main-content">
           <TopNavbar
+            activeTool={activeTool}
             banks={banks}
             activeBankId={activeBankId}
             onSelectBank={handleSelectBank}
@@ -324,50 +340,63 @@ export default function App() {
             onToggleTheme={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
           />
 
-          {/* Workspace Studio */}
-          <div className="workspace-layout">
-            {/* Left Column: Form */}
-            <ChequeForm
-              formData={formData}
-              onChange={handleFormChange}
-              activeBankName={banks[activeBankId]?.name || 'Standard'}
-              wordsPreview={rawWords}
-            />
+          {/* Conditional Tool Views */}
+          {activeTool === 'cheque' && (
+            <>
+              {/* Workspace Studio */}
+              <div className="workspace-layout">
+                {/* Left Column: Form */}
+                <ChequeForm
+                  formData={formData}
+                  onChange={handleFormChange}
+                  activeBankName={banks[activeBankId]?.name || 'Standard'}
+                  wordsPreview={rawWords}
+                />
 
-            {/* Right Column: Canvas Studio */}
-            <div>
-              <ChequeCanvas
-                activeBank={banks[activeBankId]}
-                coordinates={coordinates}
-                formData={formData}
-                wordsSplit={wordsSplit}
-                formattedAmount={formattedAmount}
-                selectedElementKey={selectedElementKey}
-                onSelectElement={setSelectedElementKey}
-                onUpdateCoordinate={handleUpdateCoordinate}
-                globalOffsetX={globalOffsetX}
-                globalOffsetY={globalOffsetY}
+                {/* Right Column: Canvas Studio */}
+                <div>
+                  <ChequeCanvas
+                    activeBank={banks[activeBankId]}
+                    coordinates={coordinates}
+                    formData={formData}
+                    wordsSplit={wordsSplit}
+                    formattedAmount={formattedAmount}
+                    selectedElementKey={selectedElementKey}
+                    onSelectElement={setSelectedElementKey}
+                    onUpdateCoordinate={handleUpdateCoordinate}
+                    globalOffsetX={globalOffsetX}
+                    globalOffsetY={globalOffsetY}
+                  />
+
+                  <CoordinateInspector
+                    activeBank={banks[activeBankId]}
+                    selectedKey={selectedElementKey}
+                    coordinates={coordinates}
+                    onNudge={handleNudge}
+                    onUpdateCoordField={handleUpdateCoordField}
+                    onSavePreset={handleSavePreset}
+                  />
+                </div>
+              </div>
+
+              {/* Cheque Register / History */}
+              <ChequeHistory
+                records={historyRecords}
+                onReload={handleReloadHistory}
+                onDelete={handleDeleteHistory}
+                onClear={handleClearHistory}
+                onExportCsv={handleExportCsv}
               />
+            </>
+          )}
 
-              <CoordinateInspector
-                activeBank={banks[activeBankId]}
-                selectedKey={selectedElementKey}
-                coordinates={coordinates}
-                onNudge={handleNudge}
-                onUpdateCoordField={handleUpdateCoordField}
-                onSavePreset={handleSavePreset}
-              />
-            </div>
-          </div>
-
-          {/* Cheque Register / History */}
-          <ChequeHistory
-            records={historyRecords}
-            onReload={handleReloadHistory}
-            onDelete={handleDeleteHistory}
-            onClear={handleClearHistory}
-            onExportCsv={handleExportCsv}
-          />
+          {activeTool === 'invoice' && <InvoiceTool />}
+          {activeTool === 'receipt' && <ReceiptTool />}
+          {activeTool === 'salary' && <SalarySlipTool />}
+          {activeTool === 'quotation' && <QuotationTool />}
+          {activeTool === 'challan' && <ChallanTool />}
+          {activeTool === 'calculator' && <GstCalculatorTool />}
+          {activeTool === 'converter' && <WordsConverterTool />}
         </main>
       </div>
 

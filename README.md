@@ -1,76 +1,73 @@
-# ⚡ Shakti Tools — Universal Bank Cheque Printing Suite (React)
+# ⚡ Shakti Tools — All-in-One Daily Business Tools Suite (React)
 
-A modern, high-precision **Bank Cheque Printing Tool & Business Suite** built with **React** and **Vite**, specially designed for Indian standard **CTS-2010** physical cheque printing with millimeter (mm) accuracy and code copy protection.
+A modern, high-precision **Daily Business & Banking Tools Suite** built with **React** and **Vite**, specially designed for Indian MSMEs, enterprises, shop owners, accountants, and office managers.
 
 ---
 
-## ✨ Features
+## 🛠️ Included Tools (8 Complete Business Tools)
 
-- **Comprehensive Indian Bank Presets (CTS-2010 Standards):**
-  - **Public Sector Banks (12 PSBs):**
-    - State Bank of India (SBI)
-    - Punjab National Bank (PNB)
-    - Bank of Baroda (BOB)
-    - Canara Bank
-    - Union Bank of India
-    - Bank of India (BOI)
-    - Indian Bank
-    - Central Bank of India
-    - Indian Overseas Bank (IOB)
-    - UCO Bank
-    - Bank of Maharashtra
-    - Punjab & Sind Bank
-  - **Major Private Sector Banks (14 Banks):**
-    - HDFC Bank
-    - ICICI Bank
-    - Axis Bank
-    - Kotak Mahindra Bank
-    - IndusInd Bank
-    - Yes Bank
-    - IDFC FIRST Bank
-    - Federal Bank
-    - IDBI Bank
-    - Bandhan Bank
-    - South Indian Bank (SIB)
-    - RBL Bank
-    - Karur Vysya Bank (KVB)
-    - City Union Bank (CUB)
-  - **Small Finance & Payments Banks:**
-    - AU Small Finance Bank
-    - Equitas Small Finance Bank
-    - Ujjivan Small Finance Bank
-    - Paytm Payments Bank
-  - **Foreign / MNC Banks in India:**
-    - Standard Chartered Bank
-    - HSBC India
-    - Citibank India
-  - **Custom / User Defined Layouts** (Save custom coordinates for any cooperative/rural bank)
-- **Interactive WYSIWYG Canvas Studio:**
-  - Standard CTS-2010 dimensions: **203mm × 89mm** (8" × 3.5").
-  - **Drag-and-Drop field placement:** Click and drag any element directly on screen.
-  - **Millimeter Coordinate Inspector:** Fine-tune X and Y positions by +/- 0.5mm with nudge buttons.
-  - **Grid & Ruler Overlay:** 5mm grid steps to match physical cheques with a real scale.
-  - **Toggle Cheque Leaf Graphic:** Switch between visual design preview and print-only blank text mode.
-- **Smart Financial Formatting:**
-  - Automatic Indian Currency Number-to-Words converter (**Crores, Lakhs, Thousands, Hundreds, Rupees, Paise, and 'Only'**).
-  - Dual-line auto-splitting for lengthy words.
-  - Indian numbering commas format (e.g. `₹ 1,25,450.00`).
-  - Security stars (`***`) auto-applied to prevent tampering.
-- **Security Crossings & Restrictions:**
-  - `// A/C PAYEE ONLY //` top-left stamp.
-  - `// NOT NEGOTIABLE //` label.
-  - Strikeout line over `OR BEARER`.
-  - Authorized Signatory and Company entity naming.
-- **Zero-Waste Calibration System:**
-  - Print a 1:1 scale test sheet on plain A4 paper to verify printer tray margin offsets without wasting real cheque leaves.
-  - Global Horizontal & Vertical printer offsets (mm).
-- **Cheque Register / History:**
-  - Automatically records every printed cheque into LocalStorage.
-  - 1-Click Reload back into editor.
-  - Export register to CSV.
-- **Code Copy Protection:**
-  - Built with React and Vite.
-  - Production build (`npm run build`) minifies, scrambles, and bundles all logic into obfuscated chunks (`dist/`), preventing easy source copying.
+### 1. 🖋️ Universal Bank Cheque Printing Tool (CTS-2010)
+- **Millimeter Precision Layouts:** Pre-configured dimensions and coordinates for 30+ Indian Banks:
+  - 12 Public Sector Banks (SBI, PNB, BOB, Canara, Union, BOI, etc.)
+  - 14 Private Sector Banks (HDFC, ICICI, Axis, Kotak, IndusInd, Yes Bank, etc.)
+  - Small Finance Banks & MNC Banks (AU Small Finance, Standard Chartered, HSBC, etc.)
+  - Custom / Cooperative Banks
+- **Interactive Drag-and-Drop WYSIWYG Canvas Studio:**
+  - Micro-nudge coordinates by +/- 0.5mm or +/- 0.2mm.
+  - Dedicated **Date Box Inspector** with **Only Year Text Shift** fine-tuning.
+- **Smart Indian Number-to-Words Auto-Converter:** Lakhs, Crores, Rupees, Paise, and 'Only'.
+- **Security Markings:** `A/C PAYEE ONLY`, `NOT NEGOTIABLE`, and strikeout `OR BEARER`.
+- **Zero-Waste Calibration Sheet:** Test print on plain A4 before using real cheque leaves.
+- **Cheque Register & CSV Export:** Local storage log of all printed cheques.
+
+### 2. 🧾 GST Tax Invoice Generator
+- Full B2B / B2C Indian GST Tax Invoice maker.
+- Seller & Buyer GSTIN, PAN, State Code detection.
+- Auto-switch between **Intra-State (CGST + SGST)** and **Inter-State (IGST)** based on buyer & seller states.
+- Itemized goods/services table with HSN/SAC codes, quantity, units, rates, discounts, and GST slabs (0%, 5%, 12%, 18%, 28%).
+- Bank account details for RTGS/NEFT/UPI payment.
+- Terms & Conditions and Authorized Signatory seal.
+- Direct **Print / Save PDF** ready A4 layout.
+
+### 3. 💰 Cash Receipt & Payment Voucher Maker
+- Dual mode: **Cash Receipt (रसीद)** and **Payment Voucher (भुगतान वाउचर)**.
+- Official receipt numbering and date tracking.
+- Payment modes: Cash, Cheque, UPI, NEFT/RTGS with reference/UTR numbers.
+- Classical Indian **Revenue Stamp** box (₹1 Revenue Stamp border).
+- Receiver, Accountant, and Authorized Signatory sign-off blocks.
+
+### 4. 📑 Salary Slip / Monthly Payslip Generator
+- Standard corporate Indian monthly payslip layout.
+- Attendance summary: Total Days, Working Days, Present Days, Paid Leaves, LOP.
+- Two-column financial breakdown:
+  - **Earnings:** Basic Salary, HRA, Conveyance, Special Allowance, Overtime/Incentives.
+  - **Deductions:** Employee Provident Fund (EPF), ESIC, Professional Tax (PT), TDS, Advance Recovery.
+- Auto Net Salary in figures and Indian words.
+- Employer and Employee signature blocks.
+
+### 5. 📋 Commercial Quotation & Estimate Generator
+- Formal B2B quotation and price estimate maker.
+- Scope of work / product deliverables with unit rates, GST, and totals.
+- Commercial terms: Ex-works, delivery timeline, payment terms, warranty period.
+- Dual approval blocks: Vendor Signatory and Client Acceptance signature.
+
+### 6. 🚚 Delivery Challan & Dispatch Note
+- Goods dispatch slip & gate pass.
+- Transport tracking: Transporter Name, Vehicle No, E-Way Bill No, LR/GR No, PO No.
+- Itemized package description, HSN, quantity dispatched, and packaging details (crates, boxes, drums).
+- 3-party sign off: Prepared By, Driver / Transporter, and Receiver (Goods Received in Good Condition).
+
+### 7. 🧮 GST & Commercial Profit Margin Calculator
+- **Add GST:** Base Amount + Rate% = CGST + SGST + Final Payable Gross.
+- **Extract / Remove GST:** MRP / Gross Amount - Rate% = Net Base Price + Embedded GST.
+- **Profit Margin & Markup:** Cost Price + Target % = Selling Price and Gross Profit analysis.
+- Quick 1-click GST rate buttons: 0%, 5%, 12%, 18%, 28%.
+
+### 8. 🔤 Number to Indian Words & Cash Till Counter
+- Instant number to Indian words converter for banking, RTGS/NEFT slips, and accounting software.
+- Cheque 2-line split preview with character counters.
+- **Cash Denomination Counter:** Daily cash closing register counter for ₹500, ₹200, ₹100, ₹50, ₹20, ₹10, ₹5, ₹2, ₹1 notes.
+- 1-click "Copy Cash Closing Slip" to clipboard.
 
 ---
 
@@ -95,8 +92,6 @@ npm run preview
 
 ---
 
-## 🖨️ Printing Guidelines
+## 🔒 Code Protection
 
-1. **Paper Size in Printer Dialog:** Select **Custom (203mm × 89mm)** or feed standard envelope/cheque into your printer tray.
-2. **Margins:** Set margins to **None** or **Default**.
-3. **Scale:** Ensure scale is set to **100% (Actual Size)**, DO NOT select "Fit to Page" so millimeter precision is preserved.
+Built with React and Vite. When built with `npm run build`, all component code, presets, and logic are bundled, minified, and obfuscated in `dist/`, making it impossible for regular visitors to copy source files directly.

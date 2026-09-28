@@ -1,20 +1,24 @@
 /**
- * React Cheque Printing Engine - Precision Millimeter Stylesheet
- * Standard Indian CTS-2010: 203mm x 89mm
+ * Shakti Tools Suite - Universal Precision Print Engine
+ * Handles both physical Indian CTS-2010 Cheque Printing & Standard A4 Business Documents
  */
 
 @media print {
   body, html {
     margin: 0 !important;
     padding: 0 !important;
-    background: transparent !important;
+    background: #ffffff !important;
+    color: #000000 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
+  /* Global Print Hide */
   .sidebar,
   .top-navbar,
-  .card,
+  .print-hide,
+  .tool-editor-pane,
+  .card:not(.print-element),
   .canvas-toolbar,
   .coordinates-bar,
   .history-section,
@@ -22,7 +26,7 @@
   .toast-container,
   .grid-overlay,
   .cheque-bg-image,
-  .print-hide {
+  .bg-ambient-glow {
     display: none !important;
   }
 
@@ -31,12 +35,15 @@
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
   }
 
+  /* ==========================================
+     1. PHYSICAL CHEQUE LEAF PRINTING
+     ========================================== */
   .cheque-leaf {
     position: absolute !important;
     background: transparent !important;
@@ -72,5 +79,33 @@
     padding: 2px 6px !important;
     letter-spacing: 1.2px !important;
     font-weight: 800 !important;
+  }
+
+  /* ==========================================
+     2. STANDARD A4 BUSINESS DOCUMENTS (INVOICE, RECEIPT, SALARY, QUOTE, CHALLAN)
+     ========================================== */
+  .tool-view-container, .tool-preview-pane {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .a4-print-document {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 8mm 12mm !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    page-break-after: avoid;
+    break-after: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }
